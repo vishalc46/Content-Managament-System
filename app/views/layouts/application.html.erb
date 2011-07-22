@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title><%= @pagetitle || (@page && @page.title) || "Learning Rails" %></title>
+		<%= stylesheet_link_tag 'learningrails' %>
+  </head>
+  <body>
+		<div id='pagewrapper'>
+			<div id='header'>
+	<a href= "/">
+   <img alt= "Sapna Solutions Logo" src = "/images/logo.png">
+	</a>
+				<p>We are an Indo- European development </br>company developing awsome apps..!</p>
+
+		        </div>
+			<div id='navbar'>
+			<ul>
+			    <li><%= link_to 'Home', {:controller => 'try', :action => 'home', :name => 'home'} %></li>
+			    <li><%= link_to 'Portfolio', {:controller => 'try', :action => 'portfolio', :name => 'portfolio'} %></li>
+			    <li><%= link_to 'Jobs', {:controller => 'try', :action => 'jobs', :name => 'jobs'} %></li>
+			    <li><%= link_to 'About', {:controller => 'try', :action => 'about', :name => 'about'} %></li>
+			    <li><%= link_to 'Contact', {:controller => 'try', :action => 'contact', :name => 'contact'} %></li>
+			    <li><%= link_to 'List Users', {:controller => 'users', :action => 'index', :name => 'users'} %></li>
+			    <li><%= link_to 'List Pages', {:controller => 'pages', :action => 'index'} %></li>
+			      <li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>			
+			   <li><% if logged_in? %>
+			<%= link_to "Sign Out", logout_path %>
+				<% else %>
+			<%= link_to "Sign In", login_path %>
+				<% end %>
+			    <li><%= link_to 'Sign Up', {:controller => 'users', :action => 'new', :name => 'register'} %></li>
+				</li>
+			</ul>
+		  <div>
+		</div>
+
+		<div id='content'>
+		<h2><%= flash[:notice] %></h2>
+    			  <%= yield %>
+		</div>
+
+		<div id='footer'>
+			<p>Sapna Infotech Solutions @2011 All rights reserved</p>
+		</div>
+  </body>
+</html>
